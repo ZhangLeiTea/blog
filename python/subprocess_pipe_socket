@@ -1,0 +1,12 @@
+1、主要阐述
+  1）python的subprocess模块Popen类的使用，及进程stdin/stdout/stderr的解释
+  2）linux-pipe的理解及pipe作为Popen:stdout的使用
+  3）Linux通过pipe作进程间通信，并将pipe一端的输出作为socket的输入用于socket传输数据
+  4）tcp-socket传输数据的一种方式：附带标志，例如 【数据开始传输标志，数据大小，数据传输完成标志】，这些对标志的限定就像是在制定应用层协议
+  
+2、示例约束
+  1）hostA（192.168.1.2）需要hostB（192.168.1.3）上的MySQL的备份文件，即hostA向hostB发起备份请求，hostB将备份文件传输给hostA
+  2）hostA和hostB通过socket通信
+  3）hostB通过pipe和mysqldump通信，实时获取MySQLdump的输出，将该输出传输给hostA
+  
+3、

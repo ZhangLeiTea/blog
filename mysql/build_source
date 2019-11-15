@@ -26,3 +26,7 @@
   
   
 4. docker的源码编译
+   apt install -y --no-install-recommends build-essential cmake libc++-dev libssl-dev libncurses5-dev libnuma-dev liaio1 libatomic1
+    cmake -DWITHOUT_SERVER=1  -DWITH_BOOST=./boost -DCMAKE_INSTALL_PREFIX=/usr
+    make -j5 && make install
+    make package

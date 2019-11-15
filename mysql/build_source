@@ -1,0 +1,28 @@
+1. 接受MySQL的源码构建
+1）https://dev.mysql.com/doc/refman/5.7/en/installing-source-distribution.html#installing-source-distribution-configure-distribution
+    mysql的官网讲的比较清晰了
+2）如果有自己的配置选项，请参照
+    https://dev.mysql.com/doc/refman/5.7/en/source-configuration-options.html
+    这里给出了cmake的配置选项。定义这些选项  cmake -DCMAKE_INSTALL_PRIFIX=/usr/local/mysql  
+    
+3）这里补充几个没给出的选项
+    WITHOUT_SERVER=ON   仅仅构建MySQL-client程序
+
+
+2. 
+  - mysql采用cmake来作为构建框架，用于生成Linux平台的make文件或者window平台的*.sln等工程文件，然后make再根据生成的工程文件进行编译-链接-安装
+  - cmake作为MySQL编译的配置阶段，代替了原来的configure脚本程序
+  - make package 很有用，直接生成二进制包
+
+3. 给出一个完整的参照
+  > 下载MySQL源码
+  > 解压到/home/zl/mysql57目录下
+  > cd /home/zl/mysql57
+  > 下载boost源码并解压到该目录下
+  > mkdir bld
+  > cmake -DWITHOUT_SERVER=1  -DWITH_BOOST=./boost
+  > make package
+  > 或者  make && make install # 直接安装到机器中
+  
+  
+4. docker的源码编译

@@ -1,4 +1,4 @@
-1. 接受MySQL的源码构建
+1. MySQL的源码构建
 1）https://dev.mysql.com/doc/refman/5.7/en/installing-source-distribution.html#installing-source-distribution-configure-distribution
     mysql的官网讲的比较清晰了
 2）如果有自己的配置选项，请参照
@@ -36,3 +36,18 @@
 
 5. mysql运行的一些依赖
     apt install libatomic1 libssl-dev libncurses5
+    
+    
+ 二、dockerfile
+ 
+    from **
+    copy mysql-5.7.28-client.tar.gz /tmp/mysqlclient5.7.tar.gz
+    run cd /tmp \
+        && tar xf /tmp/mysqlclient5.7.tar.gz \
+        && mkdir -p /usr/local/mysql \
+        && mv /tmp/mysql-5.7.28-client/* /usr/local/mysql \         # 坑点：mv虽然重命名了，但是解压出来的包仍是原来的目录名
+        && ehco '****' > /etc/apt/source.list \
+        && apt-get update \
+        && apt-get -y install libatomic1 libssl-dev libncurses5
+    env PATH=/usr/local/mysql/bin:$PATH
+    cmd echo $(mysqldump -V)

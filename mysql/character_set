@@ -24,3 +24,6 @@
 4、mysql的utf8编码及blob
   1）现在推荐使用utf8作为文本数据的编码，二进制数据用blob数据类型
   2）blob类型在mysqld返回的时候，不会经过character_set_results的转码
+
+
+5、windows-cmd Latin1编码正确显示中文的处理

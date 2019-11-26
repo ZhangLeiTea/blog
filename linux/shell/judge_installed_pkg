@@ -1,0 +1,13 @@
+#!/bin/sh
+
+judge_installed_pkg() {
+  installed=`apt list --installed $1 | grep $1`
+  if [ -z $installed ]
+  then
+    echo 0
+  else
+    echo 1
+  fi
+}
+
+docker_installed=$(judge_installed_pkg docker-ce)

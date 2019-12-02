@@ -1,0 +1,9 @@
+1、在一行执行多个命令
+  1）comman1;comman2;command3
+     -- 不管前面命令执行成功没有，后面的命令继续执行 
+  2）command1 && command2 && command3
+     --  只有前面命令执行成功，后面命令才继续执行
+  3) command1 & command2 & comman3
+     -- &的作用是后台运行
+     -- command1 command2 command3同时运行，但是1跟2是在后台运行的，3是前台运行的
+     -- 注意区别 【command1 & command2 & command3 &】

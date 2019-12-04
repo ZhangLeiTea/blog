@@ -1,0 +1,23 @@
+1、 There are three main types of I/O: text I/O, binary I/O and raw I/O
+  1）text I/O
+    -- 底层仍然是二进制数据流
+    -- 自动编码、解码、换行符转换
+    
+  2）binary I/O
+    -- 又叫buffered I/O
+    -- bytes-like object
+    
+  3) raw I/O
+    -- unbufferd I/O
+    -- 
+    
+    buffering is an optional integer used to set the buffering policy. Pass 0 to switch buffering off (only allowed in binary mode), 1 to select line buffering (only usable in text mode), and an integer > 1 to indicate the size in bytes of a fixed-size chunk buffer. When no buffering argument is given, the default buffering policy works as follows:
+
+Binary files are buffered in fixed-size chunks; the size of the buffer is chosen using a heuristic trying to determine the underlying device’s “block size” and falling back on io.DEFAULT_BUFFER_SIZE. On many systems, the buffer will typically be 4096 or 8192 bytes long.
+
+“Interactive” text files (files for which isatty() returns True) use line buffering. Other text files use the policy described above for binary files.
+  
+  
+  4) 总结
+    -- I/O是对各种不同类型I/O的抽象（工具集）
+    -- 其各功能的实现是通过各类型的file object来实现的

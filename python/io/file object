@@ -1,0 +1,11 @@
+1、 text file
+    A file object able to read and write str objects. Often, a text file actually accesses a byte-oriented datastream and handles the text  encoding automatically. Examples of text files are files opened in text mode ('r' or 'w'), sys.stdin, sys.stdout, and instances of io.StringIO.
+  See also binary file for a file object able to read and write bytes-like objects.
+  
+2、binary file
+    A file object able to read and write bytes-like objects. Examples of binary files are files opened in binary mode ('rb', 'wb' or 'rb+'), sys.stdin.buffer, sys.stdout.buffer, and instances of io.BytesIO and gzip.GzipFile.
+    See also text file for a file object able to read and write str objects.
+    
+3、text/binary总结
+  1）text file在底层访问的仍是binary数据流，只不过自动处理了文本的编解码
+  2）注意上面解释中的列子：sys.stdin是text流，sys.stin的底层是sys.stdin.buffer是binary流

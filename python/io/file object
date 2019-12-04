@@ -9,3 +9,13 @@
 3、text/binary总结
   1）text file在底层访问的仍是binary数据流，只不过自动处理了文本的编解码
   2）注意上面解释中的列子：sys.stdin是text流，sys.stin的底层是sys.stdin.buffer是binary流
+  
+  
+4、底层存储（backing store）
+ a file object can mediate access to a real on-disk file or to another type of storage or communication device (for example standard input/output, in-memory buffers, sockets, pipes, etc.)
+  1) on-disk file
+  2) communication device 通信设备
+    (1) standard input/output
+    (2) in-memory buffers
+    (3) socket
+    (4) pipe

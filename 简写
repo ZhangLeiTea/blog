@@ -1,0 +1,5 @@
+getty       --get teletype        配置终端机
+cont        --continue
+cli         --client
+ctl         --control
+esc         --escape              --转义

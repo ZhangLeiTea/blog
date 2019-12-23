@@ -3,3 +3,8 @@ cont        --continue
 cli         --client
 ctl         --control
 esc         --escape              --转义
+rc          --run command         
+tz          --time zone           时区
+le          --locate exe
+ld          --loader
+ent         --entry               项；dirent目录项

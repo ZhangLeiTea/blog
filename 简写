@@ -8,3 +8,4 @@ tz          --time zone           时区
 le          --locate exe
 ld          --loader
 ent         --entry               项；dirent目录项
+fildes      -- file descriptor    文件描述符

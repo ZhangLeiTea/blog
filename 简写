@@ -9,3 +9,9 @@ le          --locate exe
 ld          --loader
 ent         --entry               项；dirent目录项
 fildes      -- file descriptor    文件描述符
+rc          -- run commmands
+            -- run control  
+            -- resouce configures
+            -- runtime configuration
+        
+runcom      -- run commands

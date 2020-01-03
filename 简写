@@ -15,3 +15,5 @@ rc          -- run commmands
             -- runtime configuration
         
 runcom      -- run commands
+rec         -- recovery
+lru         -- least recently used

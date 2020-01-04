@@ -2,3 +2,33 @@
 In python, everything is an object. And every object has attributes and methods or functions. 
   Attributes are described by data variables for example like name, age, height etc.
   Properties are special kind of attributes which have getter, setter and delete methods like __get__, __set__ and __delete__ methods.
+
+
+
+### 迭代协议
+    含__iter__()方法。且方法返回的Iterator对象本身
+    含__next__()方法，每当__next__()方法被调用，返回下一个值，直到没有值可以访问，这个时候会抛出stopinteration的异常。
+
+
+### 迭代器
+  1. 迭代器是一个对象，该对象要求：
+      1. 必须实现next()方法
+      2. next()方法在迭代完成的时候必须raise StopIteration
+      
+      
+      
+### 生成器
+  1. 生成器函数
+      1. 一个函数中出现了yield、yield from语句，它就变成了生成器函数
+      2. 生成器函数的目的是为了创建出生成器对象
+  
+  2. 生成器
+      1. 生成器是一个对象
+      2. 生成器只有在响应迭代操作时才会运行。就是响应next()时
+      3. 生成器总是一个迭代器对象，迭代器一定是可迭代的
+      
+      
+### Iterable
+    1. 迭代器一定是可迭代的，但不是每一个可迭代的对象都是迭代器。
+    2. 生成器对象总是一个迭代器对象
+    3. list/dict有iter()方法，但是他们不是迭代器。list object is not a iterator

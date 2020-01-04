@@ -32,3 +32,22 @@ In python, everything is an object. And every object has attributes and methods 
     1. 迭代器一定是可迭代的，但不是每一个可迭代的对象都是迭代器。
     2. 生成器对象总是一个迭代器对象
     3. list/dict有iter()方法，但是他们不是迭代器。list object is not a iterator
+
+
+### 解释 Iteration  iterable   iterator
+Iteration is a general term for taking each item of something, one after another. Any time you use a loop, explicit or implicit, 
+to go over a group of items, that is iteration.
+
+In Python, iterable and iterator have specific meanings.
+
+An iterable is an object that has an __iter__ method which returns an iterator, or which defines a __getitem__ method that
+can take sequential indexes starting from zero (and raises an IndexError when the indexes are no longer valid). 
+So an iterable is an object that you can get an iterator from.
+
+An iterator is an object with a next (Python 2) or __next__ (Python 3) method.
+
+Whenever you use a for loop, or map, or a list comprehension, etc. in Python, the next method is called automatically 
+to get each item from the iterator, thus going through the process of iteration.
+
+A good place to start learning would be the iterators section of the tutorial and the iterator types section of the 
+standard types page. After you understand the basics, try the iterators section of the Functional Programming HOWTO.

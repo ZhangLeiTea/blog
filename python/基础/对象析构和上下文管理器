@@ -25,7 +25,7 @@ def get_zoos():
       yield index
     print('exit from infinite generator')
     
- if __name__='__main__':
+ if __name__=='__main__':
   zoo3 = zoo('zoo3')
   # 意图释放zoo3
   zoo3 = 2

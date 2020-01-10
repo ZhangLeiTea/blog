@@ -1,0 +1,42 @@
+class zoo:
+  def __init__(self, name):
+    print(f'init zoo {name}')
+    self.m_name = name
+    
+  def __del__(self):
+    print(f'del zoo {self.m_name}')
+    
+  def __enter__(self):
+    print(f'enter zoo {self.m_name}')
+    return self
+    
+  def __exit__(self, *exec_info):
+    print(f'exit zoo {self.m_name}')
+    
+def get_zoos():
+  zoo1 = zoo('zoo1')
+  with zoo('zoo2') as z:
+    print(z)
+    index = 0
+    # 无限迭代器
+    while True:
+      print(index)
+      index += 1
+      yield index
+    print('exit from infinite generator')
+    
+ if __name__='__main__':
+  zoo3 = zoo('zoo3')
+  # 意图释放zoo3
+  zoo3 = 2
+  # 调用生成器函数创建生成器对象。注意这个函数调用没有执行任何 get_zoos()的代码
+  generator1 = get_zoos()
+  next(generator1)
+  # 意图释放生成器对象
+  generator1=2
+  
+  
+============================总结=========================
+1、当生成器对象释放的时候，会将该对象中引用的对象的引用计数-1（例如在生成器函数创建的对象zoo1及zoo2）
+2、with语句应用的是满足[上下文管理器协议]的对象
+3、当生成器对象释放时，with语句会调用对象的__exit__()方法

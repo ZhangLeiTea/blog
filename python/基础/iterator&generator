@@ -29,9 +29,13 @@ In python, everything is an object. And every object has attributes and methods 
       
       
 ### Iterable
+    1. 一个对象含有__iter__()方法，它就是Iterable
     1. 迭代器一定是可迭代的，但不是每一个可迭代的对象都是迭代器。
     2. 生成器对象总是一个迭代器对象
     3. list/dict有iter()方法，但是他们不是迭代器。list object is not a iterator
+
+### iter()   for loops
+  1. iter(obj) 返回一个iteration，调用obj.__iter__()，如果obj本身就是iteration，那么返回其本身 
 
 
 ### 解释 Iteration  iterable   iterator

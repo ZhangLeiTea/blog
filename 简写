@@ -18,3 +18,6 @@ runcom      -- run commands
 rec         -- recovery
 lru         -- least recently used
 rv          -- return value
+mod         -- module
+sigint      -- signal interrupt
+int         -- interrupt

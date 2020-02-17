@@ -23,3 +23,5 @@ sigint      -- signal interrupt
 int         -- interrupt
 gle         -- gtid log event
 tcle        -- transaction context log event
+sbr         -- statement based replication
+rbr         -- row based replication

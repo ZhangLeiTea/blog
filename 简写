@@ -26,3 +26,4 @@ tcle        -- transaction context log event
 sbr         -- statement based replication
 rbr         -- row based replication
 cvt         -- convert
+ent         -- entry

@@ -1,0 +1,6 @@
+===================1 ===========
+servers=''
+server_list=127.0.0.1:33,192.168.101.2
+for real_server in $(echo $server_list | sed 's/,/ /g'); do
+  servers=$servers"server $real_server max_fails=3 fail_timeout=30s;\n"
+done

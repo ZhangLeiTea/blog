@@ -28,12 +28,15 @@
       - "adbddsaf"
 
 3. 如何插入二进制字符列
-  - 需要将二进制字符串中的特殊字符进行转移，例如0要转成\0, [']要转成\'，总之是一个字节编程了2个字节
+  - 需要将二进制字符串中的特殊字符进行转移，例如0要转成\0, [']要转成\'，总之是一个字节编程了2个字节。注意[\0]表示nul的一个字节编程了[\]+[0]2个字符
+    这个[0]是0-9的0，不是c-string的结束标记
   
   
-4. 特殊字符序列
+4. 特殊字符序列  （sql注入）
   any string that might contain any of these special characters must be properly escaped before the string is used as a data value 
   in an SQL statement that is sent to the MySQL server
       - In a C program, you can use the mysql_real_escape_string_quote() 
+          -- 'abc\0\r\n\%'  经过上述转义之后, [\0]本身代表一个字节，转义后成了[\0]（注意此时是2个字节 字符[\]+字符[0]）这样就消除了c-string的nul
+             字符串结束标记
       - many MySQL APIs provide a placeholder capability
   

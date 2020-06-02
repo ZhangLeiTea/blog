@@ -6,6 +6,27 @@
   - a hexadecimal literal is a binary string, where each pair of hexadecimal digits represents a character
   - 二进制字符串的charset. select charset(0xadbd);你会发现是binary
   
+  
+2.2 The Binary Character Set
+
+
+2.3
+  - 十六进制字面量
+    - x'adddd'
+    - X'adddd'
+    - 0xadddd
+  - bit字面量
+    - b'0101010'
+    - B'01010'
+    - 0b01010
+  - 字符串字面量
+    - 分为2种字符串类型   A string is a sequence of bytes or characters
+      - binary 字符串
+      - 字符字符串
+    -- 字面量表示
+      - 'adsfadsfads\0adfa'    如果是binary字符串，则需要转义
+      - "adbddsaf"
+
 3. 如何插入二进制字符列
   - 需要将二进制字符串中的特殊字符进行转移，例如0要转成\0, [']要转成\'，总之是一个字节编程了2个字节
   

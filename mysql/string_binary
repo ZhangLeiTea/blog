@@ -1,0 +1,18 @@
+1. string类型在MySQL中可代表2种类型：字节序列和字符序列
+
+2. 字节序列 （binary, blob）   二进制字符串
+  - 二进制字符串，也是有字符集的，它的字符集是binary    【9.1章节】
+  - 注意二进制字节序列，也是用[']/["]来引用起来的
+  - a hexadecimal literal is a binary string, where each pair of hexadecimal digits represents a character
+  - 二进制字符串的charset. select charset(0xadbd);你会发现是binary
+  
+3. 如何插入二进制字符列
+  - 需要将二进制字符串中的特殊字符进行转移，例如0要转成\0, [']要转成\'，总之是一个字节编程了2个字节
+  
+  
+4. 特殊字符序列
+  any string that might contain any of these special characters must be properly escaped before the string is used as a data value 
+  in an SQL statement that is sent to the MySQL server
+      - In a C program, you can use the mysql_real_escape_string_quote() 
+      - many MySQL APIs provide a placeholder capability
+  

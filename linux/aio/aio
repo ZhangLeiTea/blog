@@ -1,0 +1,27 @@
+1. linux提供的异步iO
+  - posix aio 
+  - native aio    (随kernel2.6发布）
+  
+2. POSIX aio
+  - 可以看做是aio的一种实现标准
+  - 现阶段，posix aio的实现：在用户态实现的，通过开启多个后台线程用于执行io操作，来模拟aio；由glibc提供实现
+  - 缺点
+    - 维持后台线程来执行io操作，本身是耗资源的，并且扩缩性不好（如何定义后台线程的个数是最合适的）
+  - 优点：
+    - 
+  - 讲道理，posix aio只是一套标准，可以有多种实现。可以使用native aio来实现POSIX aio，但是现阶段native aio支持的操作不满足posix aio的要求
+  - 支持
+    - 网络
+    - 磁盘文件
+    - 管道
+    - 终端
+    
+    
+    
+3. linux native aio
+  - 支持
+    -- 磁盘文件 （且开启了 O_DIRECTOR）
+  - 实现
+    -- 在内核态队列化多个io请求，由内核保证io的完成
+  - 缺点：
+    -- 无法控制io的队列数。例如一直队列化写io，会造成读io一直不响应

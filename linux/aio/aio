@@ -25,3 +25,8 @@
     -- 在内核态队列化多个io请求，由内核保证io的完成
   - 缺点：
     -- 无法控制io的队列数。例如一直队列化写io，会造成读io一直不响应
+    
+    
+4. 参考资料
+  http://lse.sourceforge.net/io/aio.html
+  https://man7.org/linux/man-pages/man7/aio.7.html

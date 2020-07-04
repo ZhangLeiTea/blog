@@ -1,0 +1,3 @@
+lsb_release
+  - lsb: linux standard base
+  - 描述Linux标注规范和特定发型版本的信息

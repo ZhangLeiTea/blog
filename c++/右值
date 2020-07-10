@@ -1,0 +1,4 @@
+1. 临时变量
+  -- std::thread的例子，能很好说明
+    std::thread defaultThread;
+    defaultThread = std::thread(func);          // std::thread仅有移动赋值，=的右边首先返回一个临时变量来保存std::thread(func)对象

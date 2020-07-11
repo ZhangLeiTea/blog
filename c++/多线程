@@ -1,7 +1,0 @@
-1. std::thread
-	-- 对象在析构前，需要调用join或者detach()
-	-- 只有移动语句的拷贝、赋值
-	-- 移动赋值运算，如果当前std::thread是joinable，则回调用std::terminate(),默认处理会导致程序退出
-	-- joinable
-		-- 表示一个活动的执行线程
-		-- 特殊：如果一个线程的代码执行完成了，但是std::thread并没有调用join()或者detach()，则其状态仍然是joinable

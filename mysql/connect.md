@@ -12,12 +12,21 @@
       - [client]
         - socket=/path
 
-## 2. 连接  客户端连接
+1. ddd
+2. dddss
+   1. [ ] ddd
 
-#### 参考资料
-  - https://dev.mysql.com/doc/refman/8.0/en/connection-interfaces.html
+## 2. 连接  客户端连接 
 
-#### 2.1 变量
+### 参考资料
+
+  > - <https://dev.mysql.com/doc/refman/8.0/en/connection-interfaces.html> 
+
+### 2.1 变量
+
+---
+---
+
 
 | 名称              |   类型    | 简介                                                                                                              |
 | :---------------- | :-------: | :---------------------------------------------------------------------------------------------------------------- |
@@ -28,9 +37,9 @@
 | threads_created   |     s     | 成功建立连接后分配的线程数，这个线程不是从线程缓冲中获取的。这个值一直累加                                        |
 | max_connections   |     v     | 允许同时建立连接的数量（注意spuer user连接的问题）此值过大有负影响（消耗过多的stack或者其他资源、调度也是个问题） |
 
-#### 2.2 max_connections
+### 2.2 max_connections
 
-##### 参考资料
+#### 参考资料l
 
 - <https://www.percona.com/blog/2013/11/28/mysql-error-too-many-connections/>
 - <https://www.percona.com/blog/2019/02/25/mysql-challenge-100k-connections/>

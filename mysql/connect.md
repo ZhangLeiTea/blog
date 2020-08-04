@@ -12,9 +12,6 @@
       - [client]
         - socket=/path
 
-1. ddd
-2. dddss
-   1. [ ] ddd
 
 ## 2. 连接  客户端连接 
 

@@ -1,0 +1,51 @@
+一个程序的目录
+
+可执行文件          bin                  /bin:/usr/local/bin:/usr/bin:/opt/bin               一般都是很多exe的集合。例如mysql  passwd等这些程序就一个个放在里面，一般没有父目录
+库文件              lib                 /lib：/usr/local/lib：/usr/lib: /opt/lib
+配置文件            conf                /etc/mysql
+运行时数据          data                /var/lib/mysql(database的目录)
+日志文件            log                 /var/log
+运行时pid                               /var/run
+socket
+
+
+帮助文档            manual              /
+support script     scripts
+资源                static asserts
+
+
+源代码              script              /usr/src:/usr/local/src
+include             include             /usr/include:/usr/local/include
+
+开机自启动服务
+Linux服务程序
+
+
+
+
+/bin                     这个目录存放着最经常使用的命令
+/sbin                   s就是Super User的意思，这里存放的是系统管理员使用的【系统管理程序】。
+/lib                    内核函数库（开机时使用）【系统函数库】。这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库
+/boot
+
+/dev                    dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的
+/media                     linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，linux会把识别的设备挂载到这个目录下。
+/mnt                    系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。
+                        例如，你用fdisk新建了一个分区，接下来就需要将这个分区挂在到某个目录上。 mkdir /mnt/hdc6  mount /dev/hdc6 /mnt/hdc6
+                        分区是对物理磁盘的分区，需要挂载到具体的目录
+
+/srv                    该目录存放一些服务启动之后需要提取的数据。
+
+/usr                    linux发型版本自带的软件的安装目录. 这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。
+/usr/bin                系统用户使用的【应用程序】。
+/usr/sbin               超级用户使用的比较高级的管理程序和系统守护程序。
+/usr/lib                【应用程序级的】
+/usr/src                内核源代码默认的放置目录
+/usr/include
+
+/usr/local              用户安装软件的目录。一般通过apt-get或者yum安装时
+
+/opt                    用于防止第三方大型软件。 这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。
+
+/run                    是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 /var/run 目录，应该让它指向 run。
+

@@ -1,0 +1,10 @@
+1、mysqlclient是python-mysqldb的分支，支持py3
+
+2、windows安装
+1）源码安装
+    下载了源码，但是需要vc build tool vc 14.0，下载麻烦没有尝试
+    使用了wheel的安装方式
+        https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient
+    找到python3的目录/pip install **.wheel
+
+3、linux的安装

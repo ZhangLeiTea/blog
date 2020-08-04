@@ -1,0 +1,15 @@
+declacre var URLSearchParams: {
+    prototype: URLSearchParams;
+    new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
+}
+
+表明有一个变量URLSearchParams它的类型是后面的interface声明，这个变量定义在第三方库中
+2. 后面的类型声明，表示这是一个class的静态声明，就是声明了class的构造函数的类型
+3. 整体表明URLSearchParams这个变量指向一个class的构造函数
+4. 这个构造函数的prototype的类型为URLSearchParams
+5. 注意URLSearchParams一个为变量名，一个表示类型
+
+interface URLSearchParams ｛
+    append(name: string, value: string): void;  // 实例方法
+    .....
+｝

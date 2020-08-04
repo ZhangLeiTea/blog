@@ -1,0 +1,14 @@
+1、python-mysqldb 又叫mysqldb
+    针对py2
+    依赖于MySQL c api，即 libmysqlclient库
+
+2、mysqlclient
+    由于 MySQL-python 年久失修，后来出现了它的 Fork 版本 mysqlclient，完全兼容 MySQLdb，
+    同时支持 Python3.x，是 Django ORM的依赖工具，如果你想使用原生 SQL 来操作数据库，那么推荐此驱动
+
+
+3、pymysql
+
+
+
+https://foofish.net/python-mysql.html

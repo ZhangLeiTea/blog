@@ -1,0 +1,43 @@
+回调的三元组
+    # （正常回调函数， 超时回调函数， 超时时间）
+    # 我们在处理回调时，应该讲这三元组作为一个整理，例如正常回调了就不能触发超时回调
+
+处理回调的四元组
+    # （请求id, 正常回调函数， 超时回调函数， 超时时间） 
+    # 这个四元组构成回调列表
+
+# 也可以将正常回调函数同超时回调函数合并成一个，不过这样合并的话，该合并函数得指定调用的原因：成功，超时，失败
+
+1、超时回调的2种处理
+
+# 开启定时器，当超时的时候直接调用回调函数
+    # 这种处理，会耗费很多的定时器，定时器也是一种资源现在还不确定这样频繁的创建定时器会怎么样
+    # 触发定时器调用超时函数时，需要将正确返回时的回调函数从回调列表中删除
+    # 如果是开启一个超时定时器，超时的时候就触发用户传过来的超时回调函数，貌似第二条很难处理
+
+# 共享同一个外围超时检测定时器
+    # 比如处理http、rpc、ds调用，每一个大类功能开启一个超时检测定时器，这个定时器每隔一定时间（）就去检测回调三元组的列表
+      如果发现有超时的就调用超时回调函数，并将三元组从回调列表里删除
+    # 第二种情况是收到包了。此时可能有两种情况，一是收到回包时已经超时了，二是收到回包时未超时；已经超时的处理：按道理讲此时
+      回调列表里应该没有该包的回调了直接不处理就行了；但是不能保证外围超时检测就恰好执行了，也有可能是刚超时但是检测函数还没有
+      执行，此时就要加一层判断，收到回包了且有对应的回调元组，接下来需要有一个看看是否超时的判断
+
+
+# 不可忍受超时
+    # 借助socket内核的能力，有setconnectiontimeout()和setreadtimeout()两个超时
+    # http库有三个超时
+        2.1从连接池中获取可用连接超时
+        HttpClient中的要用连接时尝试从连接池中获取，若是在等待了一定的时间后还没有获取到可用连接（比如连接池中没有空闲连接了）则会抛出获取连接超时异常。
+
+        2.2 连接目标超时connectionTimeout
+        指的是连接目标url的连接超时时间，即客服端发送请求到与目标url建立起连接的最大时间。如果在该时间范围内还没有建立起连接，则就抛出connectionTimeOut异常。
+        如测试的时候，将url改为一个不存在的url：“http://test.com” ， 超时时间3000ms过后，系统报出异常： 
+        org.apache.commons.httpclient.ConnectTimeoutException:The host did not accept the connection within timeout of 3000 ms
+
+        2.3 等待响应超时（读取数据超时）socketTimeout
+        连接上一个url后，获取response的返回等待时间 ，即在与目标url建立连接后，等待放回response的最大时间，在规定时间内没有返回响应的话就抛出SocketTimeout。
+
+    # Firefox
+        the default TimeToLive on Firefox is 115s (network.http.keep-alive.timeout)
+        The default connection timeout on Firefox is 250s (network.http.connection-retry-timeout)
+        The default request timeout for Firefox is 30s (network.http.pipelining.read-timeout).

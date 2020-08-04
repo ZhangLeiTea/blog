@@ -1,0 +1,9 @@
+1、with open(sFileName, "r", encoding=__import__("game").GetDefaultEncoding()) as f:
+    # import写在语句中的形式
+
+2. string.isdigit()
+    # startswith()
+    # endswith()
+
+3. lambda
+

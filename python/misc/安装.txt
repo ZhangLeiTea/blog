@@ -1,0 +1,36 @@
+python tag 标记了具体的 python 实现。其中：
+	py 无实现特定的拓展
+	cp CPython，也就是通常使用的 Python 实现
+	ip IronPython，跑在 Windows CLI 平台上的 Python 实现
+	pp PyPy，带 JIT 的 Python 实现
+	jy Jython，跑在 JVM 上的 Python 实现
+
+举 CPython 为例，首先必须包含的是实现名和版本号，比如 CPython2.7.9 对应的是 cp27.其次，需要包含构建 CPython 时特定的选项。具体来说，打包时会依次判断当前的 CPython 是否有下列的功能，如果有，加上对应的 flag：
+
+--with-pydebug (flag: d )
+
+--with-pymalloc (flag: m )
+
+--with-wide-unicode (flag: u )
+
+通常，我们看到的 abi tag 会是这样的 cp27mu，这是因为 --with-pymalloc 是默认开启的，而包管理中分发的 CPython 会加上 --with-wide-unicode 选项。
+
+--platform 
+macosx-10_10_x86_64
+linux_x86_64
+
+1、外网下载包
+pip download \
+    --only-binary=:all: \
+    --platform linux_x86_64 \
+    --python-version 36 \
+    --implementation cp \
+    --abi cp34m \
+    -d . \
+    requests>=2.16.0
+
+会将所有的依赖以 平台、python版本、实现、abi 四元组确定的版本下载下来
+
+2、安装
+pip install --no-index --find-links=./ requests.wheel
+安装requests.wheel时，到当前目录搜索依赖

@@ -1,0 +1,2 @@
+echo 'deb http://apt.2980.com/debian stretch main contrib non-free' > /ect/apt/sources.list
+apt-get update 

@@ -1,0 +1,23 @@
+【npm】
+1、npm install --save  --save-dev -g
+    npm uninstall
+    npm update
+
+2、npm init
+# 初始化模块，生成 package.json 文件，生成的文件包含了基本的结果
+# npm init egg --type=simple
+  # 从npm网上搜索egg-init，并用egg-init来获取egg sample boilerplate，下载到本地
+
+3、npm run 
+
+4、npm ls
+
+5. npm search eggjs
+
+6. 其他镜像
+ npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+
+7、版本号 package.json
+^2.6.1 大版本号不变，下载最新版本
+~2.6.1 大版本号和此版本号不变，下载最新版本

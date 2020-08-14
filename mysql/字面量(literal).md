@@ -1,30 +1,38 @@
 1. 字面量
-1.1 字符串字面量
-  -- 可以带编码
-  -- 表示： "" 或 ['']
+   1. 字符串字面量
+      - 可以带编码
+      - 表示： "" 或 ['']
   
-1.2 二进制字符集 和 二进制字符串 （binary string）
-  A binary string is a string of bytes. Every binary string has a character set and collation named binary. 
+   2. 二进制字符集 和 二进制字符串 （binary string）
+  `A binary string is a string of bytes. Every binary string has a character set and collation named binary. 
   A nonbinary string is a string of characters. 
-  It has a character set other than binary and a collation that is compatible with the character set
+  It has a character set other than binary and a collation that is compatible with the character set`
   
-1.2 日期、时间字面量
+2. 日期、时间字面量
 
+3. sql语句字符集
+   1. **另外的资料** <mysql/character_set.md>
+   2. 例如 name字段是blob类型，如何插入，来确保blob的字符集是某种固定的字符集（例如gbk）：需求就是-- 将字符串保存到blob字段中，要求能自定义字符串的字符集
+       - blolb类型的字段，仍然认为是字符串类型字段
+       - CREATE TABLE t (c BINARY(3));  INSERT INTO t SET c = 'a';
 
+   - 二进制字节序列在插入到sql语句中时，需要转义处理
 
-2. sql语句字符集
-2.1 例如 name字段是blob类型，如何插入，来确保blob的字符集是某种固定的字符集（例如gbk）：需求就是-- 将字符串保存到blob字段中，要求能自定义字符串的字符集
-  -- blolb类型的字段，仍然认为是字符串类型字段
-      --  CREATE TABLE t (c BINARY(3));  INSERT INTO t SET c = 'a';
-  -- 二进制字节序列在插入到sql语句中时，需要转义处理
-  -- 字符串在插入到sql语句中时，也要做转义处理
+   - **字符串在插入到sql语句中时，也要做转义处理**
   
-  -- 方法一：先拼接成整个sql语句，再将sql语句整个转成该字符集 （貌似不行，但是py client编程时，最后一步就是将整条sql语句encode成 character_client编码）
-  -- 方法二：不直接拼接成一个sql，而是使用api提供的参数。参数在拼接到sql之前，调用了转义api（例如py-mysqlclient的 db.literal()）, 这个参数的类型可以是str/bytearray
-      --  
+   - 方法一：先拼接成整个sql语句，再将sql语句整个转成该字符集 （貌似不行，但是py client编程时，最后一步就是将整条sql语句encode成 character_client编码）
+
+   - 方法二：不直接拼接成一个sql，而是使用api提供的参数。参数在拼接到sql之前，调用了转义api（例如py-mysqlclient的 db.literal()）, 这个参数的类型可以是str/bytearray
+
+   - 例如：MySQLDB里的cur.execute()函数，就提供了第二个参数，用于填充sql语句中的占位符
+
+-----
+-----
+
+``` py
       ====================  注意字节序列的格式化
       a = b'zhanglei %s' % b'aaaa'
-      
+
       ===========================================================
       def escape(self, obj, mapping=None):
         """Escape whatever value you pass to it.
@@ -39,14 +47,14 @@
                 ret = "_binary" + ret
             return ret
         return converters.escape_item(obj, self.charset, mapping=mapping)
-        
+
      ===========================
      def _quote_bytes(self, s):
         if (self.server_status &
                 SERVER_STATUS.SERVER_STATUS_NO_BACKSLASH_ESCAPES):
             return "'%s'" % (_fast_surrogateescape(s.replace(b"'", b"''")),)
         return converters.escape_bytes(s)
-        
+
      ===================================
        escape_string = _escape_unicode
 
@@ -61,10 +69,12 @@
 
     def escape_bytes(value, mapping=None):
         return "'%s'" % value.decode('latin1').translate(_escape_bytes_table)
-        
-  -- 方法三：采用api提供的占位符
+```
 
+  - 方法三：采用api提供的占位符
+       - MySQL的预编译语句？？
 
+>>
 原理：
 To insert binary data into a string column (such as a BLOB column), you should represent certain characters by escape sequences（需要用转义序列来代替某些字符）. 
 Backslash (\) and the quote character used to quote the string（反斜杠和引号字符） must be escaped. 

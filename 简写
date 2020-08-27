@@ -27,3 +27,9 @@ sbr         -- statement based replication
 rbr         -- row based replication
 cvt         -- convert
 ent         -- entry
+
+rnd         -- round            挨个（rnd_next）
+            -- random
+wsrep       -- write set replication
+lsb         -- linux standard based
+intvl       -- interval

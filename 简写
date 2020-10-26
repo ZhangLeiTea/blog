@@ -33,3 +33,5 @@ rnd         -- round            挨个（rnd_next）
 wsrep       -- write set replication
 lsb         -- linux standard based
 intvl       -- interval
+buffer      -- 缓冲区，是有固定大小的内存块
+cache       -- 表示存储在内存，但没有固定大小的内存块

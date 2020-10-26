@@ -9,19 +9,24 @@
 
 - 忘了从哪个版本开始MySQL强化了字符集的概念，提供的几个字符选项
 
-``` bash
-    # character_set_client=**   
-     mysqld通过网络协议接受到二进制数据时，如果该字段的类型是文本型（varchar/text）就认为这个文本型的字符编码是**这里注意是认为（按照这个编码来解析文本数据）但是client发过来的不应是**编码的文本数据，这个变量的作用是让mysqld按照**编码解析数据
-    # character_set_connect=**    
-    还没有确认这个的作用，反正就是第一步：mysqld会将收到的文本按照character_set_client解析（这一步的解析作用是将client的各种编码转为mysqld程序使用的编码，一般是utf16。例如Python的decode()的作用，当我们以二进制方式加载文本文件时需要decode一下，这时decode需要你来提供编码类型）第二步：将文本数据编码成character_set_connect编码（这里要说明的是，第一步仅仅是解码没有经过转码，第二步是有转码存在的）还不知道具体的用途，有一种说法是这样做mysqld可以不受client多种编码的影响，统一内部编码为
+- #### character_set_client=**   
+  - mysqld通过网络协议接受到二进制数据时，如果该字段的类型是文本型（varchar/text）就认为这个文本型的字符编码是**这里注意是认为（按照这个编码来解析文本数据）但是client发过来的不应是**编码的文本数据，这个变量的作用是让mysqld按照**编码解析数据
+- #### character_set_connect=**
+  - server接受到sql时，应该将其转成什么字符集
+  - 即将 character_set_client转为character_set_connect
+  - > 这是因为MySQL允许每个字符串文字都有其自己的字符集。也就是说，语句中字符串文字的字符集并不总是与此语句相同
+  - > 如sql语句中的某个字符串字面量可能带了字符集说明符，那么该字面量就不能按character_set_client来转换
+  - > 字面量同列值比较时，该变量不起作用，因为列有自己的字符集，直接转成了列的字符集
+  - > 还没有确认这个的作用，反正就是第一步：mysqld会将收到的文本按照character_set_client解析（这一步的解析作用是将client的各种编码转为mysqld程序使用的编码，一般是utf16。例如Python的decode()的作用，当我们以二进制方式加载文本文件时需要decode一下，这时decode需要你来提供编码类型）第二步：将文本数据编码成character_set_connect编码（这里要说明的是，第一步仅仅是解码没有经过转码，第二步是有转码存在的）还不知道具体的用途，有一种说法是这样做mysqld可以不受client多种编码的影响，统一内部编码为
 
-    character_set_connect，按照这种理解的话（第一、二步就合为一步：MySQL将文本数据以character_set_client编码转成character_set_connect编码）
-    # character_set_results=**    这是当返回文本数据时，mysqld会将返回的结果转码成character_set_reslults
-    # character_set_server=**     
-    当你定义表示，该表的字段的字符集按照下面顺序选择 该字段>该表的默认字符集>character_set_database>character_set_server
-    # character_set_database=**
-    # character_set_system=**     这是存放表定义等元数据的字符集。例如mysql.columns表
-```  
+  - > character_set_connect，按照这种理解的话（第一、二步就合为一步：MySQL将文本数据以character_set_client编码转成character_set_connect编码）
+- #### character_set_results=**    
+  - 这是当返回文本数据时，mysqld会将返回的结果转码成character_set_reslults
+- #### character_set_server=**     
+    - 当你定义表示，该表的字段的字符集按照下面顺序选择 该字段>该表的默认字符集>character_set_database>character_set_server
+- #### character_set_database=**
+- #### character_set_system=**     
+  - 这是存放表定义等元数据的字符集。例如mysql.columns表 
 
 ### 3、MySQL数据用latin1存储的时代
 

@@ -57,7 +57,7 @@
 2. 执行mingw64.exe，进入<cetus-src-path>
 3. 新建目录：mkdir build； 进入build目录： cd build
 4. 执行cmake .. -DCMAKE_INSTALL_PREFIX=d:/cetus-sqlparser -DSIMPLE_PARSER=OFF -DCMAKE_GNUtoMS=ON -G "MinGW Makefiles"
-   1) 如何找不到cmake，说明cmake路径没有在PATH变量中
+   1) 如果找不到cmake，说明cmake路径没有在PATH变量中（cmake是windows版本的）
    2) 过程中提示缺少库，则使用pacman安装，注意要安装mingw-w64下的库
        - pacman -Sl | grep <库名>      查看有哪些库
        - pacman -S <库名>              安装库

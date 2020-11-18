@@ -6,7 +6,8 @@
   - port: 一般是 [sql port] * 10 + 1
 
 - 成员之间通信的账密：
-
+  - 节点加入组的第一步是同组建立recovery信道，即使用recovery账户同组建立连接，并验证是否需要从组恢复数据
+  - 该阶段完成后，使用特殊的信道同组成员之间建立连接（这个是受group_replication_ip_allowlist影响的）
 
 
 

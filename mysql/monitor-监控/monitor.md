@@ -11,3 +11,18 @@
 
 
 ## 4. SHOW BINLOG EVENTS like ''
+
+
+---
+---
+---
+
+# 监控执行事务数
+
+## 1. show status like 'queries';
+
+## 2. show [global] status like 'questions';
+
+## 3. show [global] status like 'threads_running';
+
+## 4. show [global] status;

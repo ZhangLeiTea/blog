@@ -9,11 +9,14 @@ __declspec(dllimport) means that the symbol will be imported from a DLL. It is u
 
 Because the same header file is usually used both when compiling the DLL itself as well as the client code that will use the DLL, it is customary to define a macro that resolves to __declspec(dllexport) when compiling the DLL and __declspec(dllimport) when compiling its client, like so:
 
+``` c++
 #if COMPILING_THE_DLL
     #define DLLEXTERN __declspec(dllexport)
 #else
     #define DLLEXTERN __declspec(dllimport)
 #endif
+```
+
 To answer your specific questions:
 
 Yes, extern alone is sufficient for static libraries.

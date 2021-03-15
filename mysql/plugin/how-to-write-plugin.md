@@ -1,0 +1,2 @@
+
+<https://mariadb.com/kb/en/development-writing-plugins-for-mariadb/>

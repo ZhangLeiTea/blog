@@ -1,0 +1,42 @@
+1. string类型在MySQL中可代表2种类型：字节序列和字符序列
+
+2. 字节序列 （binary, blob）   二进制字符串
+  - 二进制字符串，也是有字符集的，它的字符集是binary    【9.1章节】
+  - 注意二进制字节序列，也是用[']/["]来引用起来的
+  - a hexadecimal literal is a binary string, where each pair of hexadecimal digits represents a character
+  - 二进制字符串的charset. select charset(0xadbd);你会发现是binary
+  
+  
+2.2 The Binary Character Set
+
+
+2.3
+  - 十六进制字面量
+    - x'adddd'
+    - X'adddd'
+    - 0xadddd
+  - bit字面量
+    - b'0101010'
+    - B'01010'
+    - 0b01010
+  - 字符串字面量
+    - 分为2种字符串类型   A string is a sequence of bytes or characters
+      - binary 字符串
+      - 字符字符串
+    -- 字面量表示
+      - 'adsfadsfads\0adfa'    如果是binary字符串，则需要转义
+      - "adbddsaf"
+
+3. 如何插入二进制字符列
+  - 需要将二进制字符串中的特殊字符进行转移，例如0要转成\0, [']要转成\'，总之是一个字节编程了2个字节。注意[\0]表示nul的一个字节编程了[\]+[0]2个字符
+    这个[0]是0-9的0，不是c-string的结束标记
+  
+  
+4. 特殊字符序列  （sql注入）
+  any string that might contain any of these special characters must be properly escaped before the string is used as a data value 
+  in an SQL statement that is sent to the MySQL server
+      - In a C program, you can use the mysql_real_escape_string_quote() 
+          -- 'abc\0\r\n\%'  经过上述转义之后, [\0]本身代表一个字节，转义后成了[\0]（注意此时是2个字节 字符[\]+字符[0]）这样就消除了c-string的nul
+             字符串结束标记
+      - many MySQL APIs provide a placeholder capability
+  

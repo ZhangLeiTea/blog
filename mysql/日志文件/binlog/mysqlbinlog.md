@@ -1,0 +1,1 @@
+mysqlbinlog -uwJXnAyRP -p7ePBXGccLZtwVIaC -h10.86.52.142 -P1028 -v --read-from-remote-server --start-datetime="2020-11-27 06:25:01" --stop-datetime="2020-11-27 06:35:01" -d db_m2sw binlog.000028 > t2.binlog

@@ -1,3 +1,0 @@
-# Group Replication
-
-1. 

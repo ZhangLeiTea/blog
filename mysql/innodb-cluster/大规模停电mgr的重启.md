@@ -10,6 +10,11 @@
 3. 该指令会提示状态最新的节点是哪个（如果当前节点不是最新状态）
 4. 使用mysqlsh同状态最新节点，建立连接
 5. 运行指令 dba.rebootClusterFromCompleteOutage();
+6. **如果遇到dba.rebootClusterFromCompleteOutage();运行时将超长**
+   1. 将各个节点停机
+   2. 将group_replication_start_on_boot临时改为OFF
+   3. 启动各个节点
+   4. 再次运行`dba.rebootClusterFromCompleteOutage();`
 
 
 # dba.rebootClusterFromCompleteOutage的处理流程

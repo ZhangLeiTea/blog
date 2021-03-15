@@ -21,6 +21,7 @@ rv          -- return value
 mod         -- module
 sigint      -- signal interrupt
 int         -- interrupt
+int         -- Integration              集合体
 gle         -- gtid log event
 tcle        -- transaction context log event
 sbr         -- statement based replication
@@ -35,3 +36,15 @@ lsb         -- linux standard based
 intvl       -- interval
 buffer      -- 缓冲区，是有固定大小的内存块
 cache       -- 表示存储在内存，但没有固定大小的内存块
+ft          -- full-text        全文索引
+trx         - transaction
+flex        - the Fast Lexical Analyzer Generator       词法分析器生成器
+bison       -                                           语法生成器
+xdes        - extend descriptor
+fsp         - file space
+ibuf        - insert buffer
+suc         - successor         后继
+pred        - predecessor       前驱
+pgp         - pretty good privacy
+gpg         - gnu privacy guard
+profile     =                   分析
